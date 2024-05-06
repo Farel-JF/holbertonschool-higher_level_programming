@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 for i in range(90):
-    print(f"{i:02}", end="")
-    if i != 89:
+  for j in range(i + 1, 10):
+    print(f"{i}{j}", end="")
+    if i != 8 or j != 9:
         print(",", end="")
     else:
         print()
