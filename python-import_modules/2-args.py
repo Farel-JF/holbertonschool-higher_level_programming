@@ -11,5 +11,7 @@ if __name__ == "__main__":
     print("{}: {}".format((len(sys.argv) - 1) ,(sys.argv[1:])[0]), end="\n\n")
   else:
     print("{} arguments:".format((len(sys.argv) - 1)), end="\n")
-  for i, arg in enumerate((sys.argv[1:]), start=1):
+  for i, arg in enumerate(sys.argv):
+    if (i == 0):
+      continue
     print("{}: {}".format(i, arg))
