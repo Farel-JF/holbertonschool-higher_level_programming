@@ -9,7 +9,7 @@ def roman_to_int(roman_string):
     Returns:
         int: The integer value corresponding to the Roman numeral string.
     """
-
+    
     if not  roman_string or None:
         return 0
 
