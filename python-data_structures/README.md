@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 lists and how to use them
 the differences and similarities between strings and lists
 the most common methods of lists and how to use them
