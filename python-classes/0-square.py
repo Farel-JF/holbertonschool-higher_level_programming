@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""contient le square"""
+""" contain  a class Square"""
 
 
 
@@ -7,7 +7,7 @@
 
 
 class Square:
-  """contient le square"""
+  """ contain  a class Square"""
 
 
 
