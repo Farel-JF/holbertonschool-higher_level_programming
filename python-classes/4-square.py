@@ -1,11 +1,21 @@
 #!/usr/bin/python3
+
+""" contain  a class Square"""
+
 class Square:
+
+    """ Private instance attribute """
+
     def __init__(self, size=0):
         self.size = size
+
+     """ property __ to retrieve it"""
 
     @property
     def size(self):
         return self.__size
+
+    """ that returns the current square area """
 
     @size.setter
     def size(self, value):
