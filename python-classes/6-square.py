@@ -1,17 +1,18 @@
 #!/usr/bin/python3
 
-""" contain  a class Square"""
+"""Contain a class Square."""
+
 
 class Square:
-
-    """ contain  a class Square"""
+    """Represent a square."""
 
     def __init__(self, size=0, position=(0, 0)):
-        self.size = size
+        """Initializes the Square instance."""
+        self.__size = size
         self.position = position
 
     """property ___ to retrieve it"""
-    
+
     @property
     def size(self):
         return self.__size

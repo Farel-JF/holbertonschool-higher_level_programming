@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 
-""" contain  a class Square"""
+"""Contains a class Square."""
+
 
 class Square:
-
-    """ Private instance attribute """
+    """Represents a square."""
 
     def __init__(self, size=0):
-        self.size = size
+        """Initializes the Square instance."""
+        self.__size = size
 
     @property
     def size(self):
@@ -25,6 +26,3 @@ class Square:
 
     def area(self):
         return self.__size ** 2
-
-
-

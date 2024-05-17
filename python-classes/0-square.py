@@ -1,17 +1,11 @@
 #!/usr/bin/python3
-""" contain  a class Square"""
-
-
-
-
+"""
+This module contains a class Square
+"""
 
 
 class Square:
-  """ contain  a class Square"""
-
-
-
-
-
-
-  pass
+    """
+    A class representing a square
+    """
+    pass

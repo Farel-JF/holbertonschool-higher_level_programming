@@ -1,10 +1,16 @@
 #!/usr/bin/python3
-""" contient le square"""
+"""Contains the Square class."""
+
+
 class Square:
-    """ contient le square"""
+    """Represents a square."""
+
     def __init__(self, size):
+        """Initializes the Square instance."""
         self.__size = size
 
-""" contient le square"""
+
+"""Contains the Square class."""
+
 
 square = Square(5)
