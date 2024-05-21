@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""divides all elements of a matrix"""
+
+
+
+
 def matrix_divided(matrix, div):
     """Divides all elements of a matrix by a given divisor.
 
@@ -7,7 +12,8 @@ def matrix_divided(matrix, div):
         div (int/float): The divisor.
 
     Returns:
-        list: A new matrix with all elements divided by div, rounded to 2 decimal places.
+        list: A new matrix with all elements divided by div, rounded to
+        2 decimal places.
 
     Raises:
         TypeError: If the matrix is not a list of lists of integers/floats,
@@ -17,8 +23,10 @@ def matrix_divided(matrix, div):
     """
     if (not isinstance(matrix, list) or
         not all(isinstance(row, list) for row in matrix) or
-        not all(isinstance(element, (int, float)) for row in matrix for element in row)):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        not all(isinstance(element, (int, float)) for row in matrix
+                for element in row)):
+        raise TypeError("matrix must be a matrix (list of lists) " +
+                        "of integers/floats")
 
     row_length = len(matrix[0])
     if not all(len(row) == row_length for row in matrix):
