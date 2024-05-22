@@ -1,4 +1,10 @@
+#!/usr/bin/python3
+"""Rectangle"""
+
+
 class Rectangle:
+    """Rectangle"""
+    
     number_of_instances = 0
     print_symbol = '#'
 
