@@ -10,6 +10,6 @@ class MyList(list):
         """Prints the list in ascending order."""
         for element in self:
             if not isinstance(element, int):
-                raise TypeError("not all the elements type int")
+                raise TypeError()
         sorted_list = sorted(self)
         print("{}".format(sorted_list))
