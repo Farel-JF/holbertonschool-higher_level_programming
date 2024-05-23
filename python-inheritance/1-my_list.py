@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Prints the list in ascending order."""
+"""MyList"""
+
+
 class MyList(list):
     """A subclass of list that includes a method to print the list
         sorted in ascending order."""
