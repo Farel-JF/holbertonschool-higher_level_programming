@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-"""def BaseGeometry class"""
-
+"""BaseGeometry class"""
 
 class BaseGeometry:
-    """def area"""
+    """BaseGeometry class empty"""
+
     def area(self):
+        """Method to calculate the area of a geometric shape"""
+
         raise Exception("area() is not implemented")
 
-    """def integer_validator"""
-
     def integer_validator(self, name, value):
+        """Method to validate integer values"""
+
         if type(name) is chr:
             return
         elif not isinstance(value, int):
