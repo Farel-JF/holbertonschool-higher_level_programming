@@ -2,28 +2,18 @@
 """
 This module contains classes representing CountedIterator.
 """
-class VerboseList(list):
-    def append(self, item):
-        super().append(item)
-        print(f"Added {item} to the list.")
+class CountedIterator:
+    def __init__(self, iterable):
+        self.iterator = iter(iterable)
+        self.count = 0
 
-    def extend(self, items):
-        super().extend(items)
-        print(f"Extended the list with {len(items)} items.")
+    def __next__(self):
+        try:
+            item = next(self.iterator)
+            self.count += 1
+            return item
+        except StopIteration:
+            raise StopIteration("No more items to iterate.")
 
-    def remove(self, item):
-        if item in self:
-            print(f"Removed {item} from the list.")
-        else:
-            print(f"Item {item} not found in the list.")
-        super().remove(item)
-
-    def pop(self, index=None):
-        if index is None:
-            popped_item = super().pop()
-            print(f"Popped {popped_item} from the list.")
-            return popped_item
-        else:
-            popped_item = super().pop(index)
-            print(f"Popped {popped_item} from the list.")
-            return popped_item
+    def get_count(self):
+        return self.count
