@@ -3,13 +3,15 @@
 
 class Rectangle:
     """Rectangle"""
-    
+
     def __init__(self, width=0, height=0):
         """Initialize the rectangle with optional width and height.
 
         Args:
-            width (int, optional): The width of the rectangle. Defaults to 0.
-            height (int, optional): The height of the rectangle. Defaults to 0.
+            width (int, optional): The width of the rectangle.
+            Defaults to 0.
+            height (int, optional): The height of the rectangle.
+            Defaults to 0.
         """
         self.width = width
         self.height = height

@@ -3,7 +3,6 @@
 
 class Rectangle:
     """Rectangle"""
-    
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
@@ -15,6 +14,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -76,7 +76,7 @@ class Rectangle:
         """
         if self.width == 0 or self.height == 0:
             return 0
-        return (self.height + self.width) * 2
+        return 2 *(self.height + self.width)
 
     def __str__(self):
         """Return a string representation of the rectangle with
@@ -86,8 +86,11 @@ class Rectangle:
             str: The rectangle represented with the character #.
         """
         if self.width == 0 or self.height == 0:
-            return 0
-        return "\n".join(["#" * self.width for _ in range(self.height)])
+            return ''
+        rectangle = ''
+        for i in range(self.height):
+            rectangle += '#' * self.width + '\n'
+        return rectangle[:-1]
 
     def __repr__(self):
         """Return a string representation of the rectangle to recreate a
@@ -101,4 +104,4 @@ class Rectangle:
     def __del__(self):
         """Print a message when the rectangle is deleted."""
         print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
+
