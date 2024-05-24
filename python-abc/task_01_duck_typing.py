@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""abs class """
 
 from abc import ABC, abstractmethod
 import math
 
-# def Shape abstract Class
+# Def Shape abstract class
 class Shape(ABC):
-
     @abstractmethod
     def area(self):
         pass
@@ -15,17 +13,18 @@ class Shape(ABC):
     def perimeter(self):
         pass
 
-# def Cirle class
-class Cercle(Shape):
+# def Implement Circle
+class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
 
     def area(self):
-        return math.pi * self.radius **2
+        return math.pi * self.radius ** 2
+
     def perimeter(self):
         return 2 * math.pi * self.radius
 
-# def Rectange class
+# def Implement Rectangle
 class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
@@ -38,9 +37,9 @@ class Rectangle(Shape):
         return 2 * (self.width + self.height)
 
 # Def the shape_info
-def shape_info(Shape):
-    print("Area: {}".format(Shape.area()))
-    print("Perimeter: {}".format(Shape.perimeter()))
+def shape_info(shape):
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
 
 # Test cases
 if __name__ == "__main__":
