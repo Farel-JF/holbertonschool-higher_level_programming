@@ -2,9 +2,9 @@
 """abs class """
 
 from abc import ABC, abstractmethod
+import math
 
-
-# Shape abstract Class
+# def Shape abstract Class
 class Shape(ABC):
 
     @abstractmethod
@@ -15,17 +15,17 @@ class Shape(ABC):
     def perimeter(self):
         pass
 
-# Cirle class
+# def Cirle class
 class Cercle(Shape):
-    def __init__(self, rayon):
-        self.rayon = rayon
+    def __init__(self, radius):
+        self.radius = radius
 
     def area(self):
-        return self.rayon
+        return math.pi * self.radius **2
     def perimeter(self):
-        return self.rayon
+        return 2 * math.pi * self.radius
 
-# Rectange class
+# def Rectange class
 class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
@@ -37,6 +37,19 @@ class Rectangle(Shape):
     def perimeter(self):
         return 2 * (self.width + self.height)
 
+# Def the shape_info
 def shape_info(Shape):
-    print(f"Area: {Shape.area()}")
-    print(f"Perimeter: {Shape.perimeter()}")
+    print("Area: {}".format(Shape.area()))
+    print("Perimeter: {}".format(Shape.perimeter()))
+
+# Test cases
+if __name__ == "__main__":
+    circle = Circle(5)
+    rectangle = Rectangle(4, 6)
+
+    print("Circle info:")
+    shape_info(circle)
+    print()
+
+    print("Rectangle info:")
+    shape_info(rectangle)
