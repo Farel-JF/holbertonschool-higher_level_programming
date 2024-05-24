@@ -15,9 +15,9 @@ class Animal(ABC):
 
 # Subclass Dog from the animal
 class Dog(Animal):
-    
+
     def sound(self):
-        print("Bark")
+        return "Bark"
 
 
 # Subclass cat from the animal
