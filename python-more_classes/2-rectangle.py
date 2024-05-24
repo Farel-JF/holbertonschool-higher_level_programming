@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Rectangle"""
+"""define Rectangle class"""
 
 class Rectangle:
-    """Rectangle"""
-    
+    """Represents a rectangle with width and height attributes."""
+
     def __init__(self, width=0, height=0):
         """Initialize the rectangle with optional width and height.
 
@@ -72,4 +72,6 @@ class Rectangle:
         Returns:
             int: The perimeter of the rectangle.
         """
-        return 2 * (self.width + self.height) if self.width != 0 and self.height != 0 else 0
+        if self.width == 0 or self.height == 0:
+            return 0
+        return 2 * (self.width + self.height)
