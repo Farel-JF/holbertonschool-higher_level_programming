@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Rectangle"""
+"""Def Rectangle class"""
 
 class Rectangle:
 
@@ -8,8 +8,10 @@ class Rectangle:
         """Initialize the rectangle with optional width and height.
 
         Args:
-            width (int, optional): The width of the rectangle. Defaults to 0.
-            height (int, optional): The height of the rectangle. Defaults to 0.
+            width (int, optional):
+            The width of the rectangle. Defaults to 0.
+            height (int, optional):
+            The height of the rectangle. Defaults to 0.
         """
         self.width = width
         self.height = height
@@ -74,7 +76,7 @@ class Rectangle:
         """
         if self.width == 0 or self.height == 0:
             return 0
-        return (self.height + self.width) * 2
+        return 2 * (self.height + self.width)
 
     def __str__(self):
         """Return a string representation of the rectangle with the
@@ -84,6 +86,8 @@ class Rectangle:
             str: The rectangle represented with the character #.
         """
         if self.width == 0 or self.height == 0:
-            return 0
-        return "\n".join(["#" * self.width for _ in range(self.height)])
-
+            return ''
+        rectangle = ''
+        for i in range(self.height):
+            rectangle += '#' * self.width + '\n'
+        return rectangle[:-1]
