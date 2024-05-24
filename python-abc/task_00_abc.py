@@ -9,12 +9,12 @@ class animal(ABC):
     def sound(self):
         pass
 
-# dog subclass
+# subclass dog from the animal
 class dog(animal):
     def sound(self):
         print("Bark")
 
-# cat subclass
+# subclass cat from the animal
 class cat(animal):
     def sound(self):
         print("Meow")
