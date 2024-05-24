@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
+"""
+This module contains classes representing different animals.
+"""
 
 from abc import ABC, abstractmethod
 
-# Abstract base class
-class animal(ABC):
-
+class Animal(ABC):
     @abstractmethod
     def sound(self):
         pass
 
-# subclass dog from the animal
-class dog(animal):
+class Dog(Animal):
     def sound(self):
         print("Bark")
 
-# subclass cat from the animal
-class cat(animal):
+class Cat(Animal):
     def sound(self):
         print("Meow")
