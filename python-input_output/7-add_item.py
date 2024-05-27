@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import sys
+
+from 5-save_to_json_file import save_to_json_file
+from 6-load_from_json_file import load_from_json_file
+
+filename = "add_item.json"
+
+# Attempt to load
+try:
+    items = load_from_json_file(filename)
+except FileNotFoundError:
+    items = []
+
+
+items.extend(sys.argv[1:])
+
+# Save the updated
+save_to_json_file(items, filename)
