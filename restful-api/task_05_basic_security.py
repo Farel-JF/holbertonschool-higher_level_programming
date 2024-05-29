@@ -2,18 +2,22 @@
 
 from flask import Flask, jsonify, request
 from flask_httpauth import HTTPBasicAuth
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required,
+get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # Change this to a strong secret key
+app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # Change this to a
+# strong secret key
 auth = HTTPBasicAuth()
 jwt = JWTManager(app)
 
 # In-memory storage for users
 users = {
-    "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
-    "admin1": {"username": "admin1", "password": generate_password_hash("adminpass"), "role": "admin"}
+    "user1": {"username": "user1", "password":
+        generate_password_hash("password"), "role": "user"},
+    "admin1": {"username": "admin1", "password":
+        generate_password_hash("adminpass"), "role": "admin"}
 }
 
 @auth.verify_password
@@ -41,7 +45,8 @@ def login():
     user = users.get(username)
 
     if user and check_password_hash(user['password'], password):
-        access_token = create_access_token(identity={"username": username, "role": user['role']})
+        access_token = create_access_token(identity={"username": username,
+                                                     "role": user['role']})
         return jsonify(access_token=access_token), 200
     return jsonify({"error": "Invalid credentials"}), 401
 
