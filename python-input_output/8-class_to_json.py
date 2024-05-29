@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""contient la fonction class_to_json """
+
 
 def class_to_json(obj):
     """
