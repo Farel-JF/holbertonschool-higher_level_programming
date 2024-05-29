@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+"""contais the Consuming and processing data from an API using Python"""
+
 import requests
+import json
 import csv
 
 def fetch_and_print_posts():
@@ -18,6 +21,7 @@ def fetch_and_print_posts():
             print(post['title'])
 
 def fetch_and_save_posts():
+    """fetches all post from JSONPlaceholder"""
     url = 'https://jsonplaceholder.typicode.com/posts'
     response = requests.get(url)
 
@@ -34,6 +38,5 @@ def fetch_and_save_posts():
         with open('posts.csv', 'w', newline='', encoding='utf-8') as csvfile:
             fieldnames = ['id', 'title', 'body']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
             writer.writeheader()
             writer.writerows(structured_posts)
