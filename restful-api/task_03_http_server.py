@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""`http.server` module"""
 import http.server
 import socketserver
 import json
@@ -37,10 +38,11 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             }
             self.wfile.write(json.dumps(error_message).encode('utf-8'))
 
-# Setting up the server
+# def Setting up the server
 PORT = 8000
 Handler = SimpleHTTPRequestHandler
 
+#creat the serveur
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print(f"Serving on port {PORT}")
     httpd.serve_forever()
