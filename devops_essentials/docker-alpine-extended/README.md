@@ -1,0 +1,3 @@
+Building on the foundation of the previous exercise,
+we’re now diving deeper into creating customized Docker images. By extending a Docker image,
+you can include additional tools and files, tailoring the container environment to your specific needs
