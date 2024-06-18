@@ -1,5 +1,5 @@
--- the first table
-CREATE TABLE IF NOT EXISTS first_table(
-	id INT,
-	nama VARCHAR(256)
+-- This script creates the table first_table if it doesn't exist in the current database
+CREATE TABLE IF NOT EXISTS first_table (
+    id INT,
+    name VARCHAR(256)
 );
