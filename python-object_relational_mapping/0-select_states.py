@@ -1,32 +1,31 @@
 #!/usr/bin/python3
-"""Module listing all states from the database"""
+"""This script lists all states from the database hbtn_0e_0_usa"""
 
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    # Connect to the database
-    db = MySQLdb.connect(
+        # Connect to MySQL database
+        db = MySQLdb.connect(
           host="localhost",
           port=3306,
           user=argv[1],
           passwd=argv[2],
           db=argv[3],
-          )
+        )
+        # Create a cursor object
+        cursor = db.cursor()
 
-    # Create a cursor object to interact with the database
-    cur = db.cursor()
+        # Execute the query to fetch all states sorted by id
+        cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Execute the SQL query to select all states ordered by their ID
-    cur.execute("""SELECT * FROM states ORDER BY id""")
+        # Fetch all rows
+        states = cursor.fetchall()
 
-    # Fetch all the rows returned by the query
-    query_rows = cur.fetchall()
+         # Print each row
+        for row in query_rows:
+            print(row)
 
-    # Print each row
-    for row in query_rows:
-        print(row)
-
-    # Close the cursor and connection
-    cur.close()
-    db.close()
+        # Close cursor and connection
+        cursor.close()
+        db.close()
