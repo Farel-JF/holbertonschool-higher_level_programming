@@ -1,52 +1,32 @@
 #!/usr/bin/python3
-"""
-This script lists all states from the database hbtn_0e_0_usa
-"""
+"""Module listing all states from the database"""
 
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    # Check if all three arguments are provided
-    if len(sys.argv) != 4:
-        print("Usage: python script.py <username> <password> <database>")
-        sys.exit(1)
+    # Connect to the database
+    db = MySQLdb.connect(
+          host="localhost",
+          port=3306,
+          user=argv[1],
+          passwd=argv[2],
+          db=argv[3],
+          )
 
-    # Assign command-line arguments to variables
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    # Create a cursor object to interact with the database
+    cur = db.cursor()
 
-    try:
-        # Connect to MySQL database
-        db = MySQLdb.connect(
-            host='localhost',
-            user=username,
-            password=password,
-            database=database,
-            port=3306
-        )
+    # Execute the SQL query to select all states ordered by their ID
+    cur.execute("""SELECT * FROM states ORDER BY id""")
 
-        # Create a cursor object
-        cursor = db.cursor()
+    # Fetch all the rows returned by the query
+    query_rows = cur.fetchall()
 
-        # Execute the query to fetch all states sorted by id
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    # Print each row
+    for row in query_rows:
+        print(row)
 
-        # Fetch all rows
-        states = cursor.fetchall()
-
-        # Display results as per example format
-        for state in states:
-            print(state)
-
-    except MySQLdb.Error as e:
-        print(f"Error connecting to MySQL database: {e}")
-        sys.exit(1)
-
-    finally:
-        # Close cursor and connection
-        if cursor:
-            cursor.close()
-        if db:
-            db.close()
+    # Close the cursor and connection
+    cur.close()
+    db.close()
