@@ -17,14 +17,14 @@ if __name__ == "__main__":
         cursor = db.cursor()
 
         # Execute the query to fetch all states sorted by id
-        cur.execute("""SELECT * FROM states ORDER BY id""")
+        cursor.execute("""SELECT * FROM states ORDER BY id""")
 
         # Fetch all rows
         states = cursor.fetchall()
 
          # Print each row
-        for row in query_rows:
-            print(row)
+        for state in state:
+            print(state)
 
         # Close cursor and connection
         cursor.close()
