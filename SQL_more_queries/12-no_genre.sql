@@ -5,4 +5,4 @@ FROM tv_show_genres AS x
 LEFT JOIN tv_genres As z
 ON x.genre_id = z.id
 GROUP BY x.genre_id
-ORDER BY 2 DESC;
+ORDER BY number_of_shows DESC;
