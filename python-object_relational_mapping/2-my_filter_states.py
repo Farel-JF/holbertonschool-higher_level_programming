@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""Module listing all states with a name starting with N from the database"""
+"""
+Script to display states from hbtn_0e_0_usa where name matches given argument
+"""
 
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    # Connect to the database
+    # Connect to MySQL database
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -17,10 +19,9 @@ if __name__ == "__main__":
     # Create a cursor object to interact with the database
     cur = db.cursor()
 
-    # Execute the SQL query to select all states with names starting with 'N'
-    cur.execute(
-        """SELECT * FROM states WHERE name LIKE BINARY 'N%'ORDER BY id ASC"""
-        )
+    # Prepare SQL query using format to insert the state_name safely
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cur.execute(query, (state_name,))
 
     # Fetch all the rows returned by the query
     query_rows = cur.fetchall()
@@ -28,7 +29,6 @@ if __name__ == "__main__":
     # Print each row
     for row in query_rows:
         print(row)
-
-    # Close the cursor and connection
+    # Close cursor and connection
     cur.close()
     db.close()
