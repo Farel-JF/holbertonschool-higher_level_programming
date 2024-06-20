@@ -1,35 +1,28 @@
 #!/usr/bin/python3
-"""
-Script to display states from hbtn_0e_0_usa where name matches given argument
-"""
+"""Lists all states with a name starting with N (upper N)"""
+
 
 import MySQLdb
-from sys import argv
+import sys
+
 
 if __name__ == "__main__":
-    # Connect to MySQL database
     db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=argv[1],
-        passwd=argv[2],
-        db=argv[3],
+        host='localhost',
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3],
+        port=3306
     )
 
-    # Create a cursor object to interact with the database
     cur = db.cursor()
+    cur.execute(
+        """SELECT * FROM states WHERE name = % s ORDER BY states.id ASC""",
+        (sys.argv[4],))
 
-    # Prepare SQL query with parameterized query to avoid SQL injection
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (state_name,))
-
-    # Fetch all the rows returned by the query
-    query_rows = cur.fetchall()
-
-    # Print each row
-    for row in query_rows:
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
 
-    # Close cursor and connection
     cur.close()
     db.close()

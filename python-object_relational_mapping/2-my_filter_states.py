@@ -1,34 +1,28 @@
 #!/usr/bin/python3
-"""
-Script to display states from hbtn_0e_0_usa where name matches given argument
-"""
+"""Module listing all states with a name that matc the arg from the database"""
 
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    # Connect to MySQL database
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=argv[1],
-        passwd=argv[2],
-        db=argv[3],
-    )
+    # Connect to the database
+    db = MySQLdb.connect("localhost", argv[1], argv[2], argv[3])
 
     # Create a cursor object to interact with the database
     cur = db.cursor()
 
-    # Prepare SQL query using format to insert the state_name safely
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (state_name,))
-
+    # Execute the SQL query with parameterized input
+    cur.execute(
+        """SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"""
+        .format(argv[4]))
     # Fetch all the rows returned by the query
     query_rows = cur.fetchall()
 
-    # Print each row
+    # Print  row
     for row in query_rows:
-        print(row)
-    # Close cursor and connection
+        if row[1] == argv[4]:
+            print(row)
+
+    # Close the cursor and connection
     cur.close()
     db.close()
