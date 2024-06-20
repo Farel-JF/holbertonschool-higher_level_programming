@@ -9,15 +9,11 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    # Database connection string
-    db_string = f"mysql://{username}:{password}@localhost:3306/{database}"
-
     # Create database engine
-    engine = create_engine(db_string)
+    user, passwd, database = argv[1], argv[2], argv[3]
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+                           .format(user, passwd, database), pool_pre_ping=True)
+    
 
     # Bind the engine to the Base class
     Base.metadata.bind = engine
