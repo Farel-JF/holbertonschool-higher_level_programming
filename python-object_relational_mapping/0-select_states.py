@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # Create a cursor object
     curs = db.cursor()
     # Execute the query to fetch all states sorted by id
-    curs.execute("SELECT * FROM states ORDER BY id ASC")
+    curs.execute("""SELECT * FROM states ORDER BY id""")
     # Fetch all rows
     states = curs.fetchall()
     # Display results as per example format
