@@ -1,14 +1,40 @@
-USE hbtn_0c_0;
+#!/usr/bin/python3
+"""Script that lists all State objects that contain the letter a"""
 
--- Create the second_table if it does not exist
-CREATE TABLE IF NOT EXISTS second_table (
-    id INT,
-    name VARCHAR(256),
-    score INT
-);
+import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 
--- Insert data into second_table
-INSERT INTO second_table (id, name, score) VALUES (1, 'John', 10);
-INSERT INTO second_table (id, name, score) VALUES (2, 'Alex', 3);
-INSERT INTO second_table (id, name, score) VALUES (3, 'Bob', 14);
-INSERT INTO second_table (id, name, score) VALUES (4, 'George', 8);
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print("Usage: {} username password database".format(sys.argv[0]))
+        sys.exit(1)
+
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    # Database connection
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
+                           format(username, password, database))
+
+    # Create a configured "Session" class
+    Session = sessionmaker(bind=engine)
+
+    # Create a Session
+    session = Session()
+    Base.metadata.create_all(engine)
+
+    # Query for State objects containing the letter 'a', sorted by id
+    states_with_a = session.query(State)\
+        .filter(State.name.like('%a%'))\
+        .order_by(State.id.asc())
+
+    if states_with_a:
+        for state in states_with_a:
+            print("{}: {}".format(state.id, state.name))
+    else:
+        print("Nothing")
+
+    session.close()
