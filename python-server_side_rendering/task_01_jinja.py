@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Basic flask application that renders a HTML template"""
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template
 import json
 
 app = Flask(__name__)
